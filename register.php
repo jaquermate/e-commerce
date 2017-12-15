@@ -47,31 +47,41 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 <div class="header-grid">
                     <div class="header-grid-left animated wow slideInLeft" data-wow-delay=".5s">
                         <ul>
+                            
+                            <?php
+                            
+
+                            if ($_GET['correo'] == '') { ?>
+                                <li><i class="glyphicon glyphicon-log-in" aria-hidden="true"></i><a href="login.php">Login</a></li>
+                                <li><i class="glyphicon glyphicon-book" aria-hidden="true"></i><a href="register.php">Register</a></li>
+                            <?php } else {
+                                ?>
+                                <li> <a >Logueado como: <?php echo $_GET['correo'];?></a></li><li><h3>  </h3> </li><?php
+                            }
+                            ?>
                             <li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i><a href="mailto:e-mercadillo@mercadillo.com">e-mercadillo@mercadillo.com</a></li>
                             <li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>+1234 567 892</li>
-                            <li><i class="glyphicon glyphicon-log-in" aria-hidden="true"></i><a href="login.php">Login</a></li>
-                            <li><i class="glyphicon glyphicon-book" aria-hidden="true"></i><a href="register.php">Register</a></li>
-                            <li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i><a href="mail.php">Mail Us</a></li>
+                            <li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i><a href="mail.php?<?php echo "correo=".$_GET['correo']."&id_usuario=".$_GET['id_usuario']?>">Contactanos</a></li>
                         </ul>
                     </div>
                     <div class="header-grid-right animated wow slideInRight" data-wow-delay=".5s">
                         <ul class="social-icons">
-                            <li><a href="#" class="facebook"></a></li>
-                            <li><a href="#" class="twitter"></a></li>
-                            <li><a href="#" class="g"></a></li>
-                            <li><a href="#" class="instagram"></a></li>
+                            <li><a href="https://www.facebook.com/search/top/?q=e-mercadillo" class="facebook"></a></li>
+                            <li><a href="https://twitter.com/search?q=e-mercadillo" class="twitter"></a></li>
+                            <li><a href="https://plus.google.com/s/e-mercadillo/top "class="g"></a></li>
+                            <li><a href="https://www.instagram.com/e-mercadillo" class="instagram"></a></li>
                         </ul>
                     </div>
                     <div class="clearfix"> </div>
                 </div>
                 <div class="logo-nav">
                     <div class="logo-nav-left animated wow zoomIn" data-wow-delay=".5s">
-                        <h1><a href="index.php">E-mercadillo <span >TU TIENDA ONLINE</span></a></h1>
+                        <h1><a href="index.php?<?php echo "correo=".$_GET['correo']."&id_usuario=".$_GET['id_usuario']?>">E-mercadillo <span >TU TIENDA ONLINE</span></a></h1>
                     </div>
                     <div class="logo-nav-left1">
                         <nav class="navbar navbar-default">
                             <!-- Brand and toggle get grouped for better mobile display -->
-                             <div class="navbar-header nav_2">
+                            <div class="navbar-header nav_2">
                                 <button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse" data-target="#bs-megadropdown-tabs">
                                     <span class="sr-only">Toggle navigation</span>
                                     <span class="icon-bar"></span>
@@ -81,7 +91,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             </div>
                             <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
                                 <ul class="nav navbar-nav">
-                                    <li class="active"><a href="index.php" class="act">Inicio</a></li>	
+                                    <li class="active"><a href="index.php?<?php echo "correo=".$_GET['correo']."&id_usuario=".$_GET['id_usuario']?>" class="act">Inicio</a></li>	
                                     <!-- Mega Menu -->
                                     <li class="dropdown">
                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Electrónica <b class="caret"></b></a>
@@ -90,25 +100,25 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                                 <div class="col-sm-4">
                                                     <ul class="multi-column-dropdown">
                                                         <h6>Cámaras</h6>
-                                                        <li><a href="products.php?id_prod=1">Canon EOS 1300D</a></li>
-                                                        <li><a href="products.php?id_prod=2">Nikon D3400</a></li>
-                                                        <li><a href="products.php?id_prod=3">Sony Alpha 68</a></li>
+                                                        <li><a href="products.php?id_prod=1<?php echo "&correo=".$_GET['correo']."&id_usuario=".$_GET['id_usuario']?>">Canon EOS 1300D</a></li>
+                                                        <li><a href="products.php?id_prod=2<?php echo "&correo=".$_GET['correo']."&id_usuario=".$_GET['id_usuario']?>">Nikon D3400</a></li>
+                                                        <li><a href="products.php?id_prod=3<?php echo "&correo=".$_GET['correo']."&id_usuario=".$_GET['id_usuario']?>">Sony Alpha 68</a></li>
                                                     </ul>
                                                 </div>
                                                 <div class="col-sm-4">
                                                     <ul class="multi-column-dropdown">
                                                         <h6>TV</h6>
-                                                        <li><a href="products.php?id_prod=4">Samsung 49MU6405</a></li>
-                                                        <li><a href="products.php?id_prod=5">LG 32LJ500U</a></li>
-                                                        <li><a href="products.php?id_prod=6">Philips 50PUS6162</a></li>
+                                                        <li><a href="products.php?id_prod=4<?php echo "&correo=".$_GET['correo']."&id_usuario=".$_GET['id_usuario']?>">Samsung 49MU6405</a></li>
+                                                        <li><a href="products.php?id_prod=5<?php echo "&correo=".$_GET['correo']."&id_usuario=".$_GET['id_usuario']?>">LG 32LJ500U</a></li>
+                                                        <li><a href="products.php?id_prod=6<?php echo "&correo=".$_GET['correo']."&id_usuario=".$_GET['id_usuario']?>">Philips 50PUS6162</a></li>
                                                     </ul>
                                                 </div>
                                                 <div class="col-sm-4">
                                                     <ul class="multi-column-dropdown">
                                                         <h6>GPS</h6>
-                                                        <li><a href="products.php?id_prod=7">TomTom Start 52</a></li>
-                                                        <li><a href="products.php?id_prod=8">Garmin Drive 50</a></li>
-                                                        <li><a href="products.php?id_prod=9">OHREX Nav Plus</a></li>
+                                                        <li><a href="products.php?id_prod=7<?php echo "&correo=".$_GET['correo']."&id_usuario=".$_GET['id_usuario']?>">TomTom Start 52</a></li>
+                                                        <li><a href="products.php?id_prod=8<?php echo "&correo=".$_GET['correo']."&id_usuario=".$_GET['id_usuario']?>">Garmin Drive 50</a></li>
+                                                        <li><a href="products.php?id_prod=9<?php echo "&correo=".$_GET['correo']."&id_usuario=".$_GET['id_usuario']?>">OHREX Nav Plus</a></li>
                                                     </ul>
                                                 </div>
                                                 <div class="clearfix"></div>
@@ -122,25 +132,25 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                                 <div class="col-sm-4">
                                                     <ul class="multi-column-dropdown">
                                                         <h6>Gama Alta</h6>
-                                                       <li><a href="products.php?id_prod=10"></a></li>
-                                                        <li><a href="products.php?id_prod=11"></a></li>
-                                                        <li><a href="products.php?id_prod=12"></a></li>
+                                                        <li><a href="products.php?id_prod=10<?php echo "&correo=".$_GET['correo']."&id_usuario=".$_GET['id_usuario']?>"></a></li>
+                                                        <li><a href="products.php?id_prod=11<?php echo "&correo=".$_GET['correo']."&id_usuario=".$_GET['id_usuario']?>"></a></li>
+                                                        <li><a href="products.php?id_prod=12<?php echo "&correo=".$_GET['correo']."&id_usuario=".$_GET['id_usuario']?>"></a></li>
                                                     </ul>
                                                 </div>
                                                 <div class="col-sm-4">
                                                     <ul class="multi-column-dropdown">
                                                         <h6>Gama Media</h6>
-                                                         <li><a href="products.php?id_prod=13"></a></li>
-                                                        <li><a href="products.php?id_prod=14"></a></li>
-                                                        <li><a href="products.php?id_prod=15"></a></li>
+                                                        <li><a href="products.php?id_prod=13<?php echo "&correo=".$_GET['correo']."&id_usuario=".$_GET['id_usuario']?>"></a></li>
+                                                        <li><a href="products.php?id_prod=14<?php echo "&correo=".$_GET['correo']."&id_usuario=".$_GET['id_usuario']?>"></a></li>
+                                                        <li><a href="products.php?id_prod=15<?php echo "&correo=".$_GET['correo']."&id_usuario=".$_GET['id_usuario']?>"></a></li>
                                                     </ul>
                                                 </div>
                                                 <div class="col-sm-4">
                                                     <ul class="multi-column-dropdown">
                                                         <h6>Gama Baja</h6>
-                                                        <li><a href="products.php?id_prod=16"></a></li>
-                                                        <li><a href="products.php?id_prod=17"></a></li>
-                                                        <li><a href="products.php?id_prod=18"></a></li>
+                                                        <li><a href="products.php?id_prod=16<?php echo "&correo=".$_GET['correo']."&id_usuario=".$_GET['id_usuario']?>"></a></li>
+                                                        <li><a href="products.php?id_prod=17<?php echo "&correo=".$_GET['correo']."&id_usuario=".$_GET['id_usuario']?>"></a></li>
+                                                        <li><a href="products.php?id_prod=18<?php echo "&correo=".$_GET['correo']."&id_usuario=".$_GET['id_usuario']?>"></a></li>
                                                     </ul>
                                                 </div>
                                                 <div class="clearfix"></div>
@@ -154,8 +164,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                                 <div class="col-sm-4">
                                                     <ul class="multi-column-dropdown">
                                                         <h6>Sobremesa</h6>
-                                                        <li><a href="products.php?id_prod=19"></a></li>
-                                                        <li><a href="products.php?id_prod=20"></a></li>
+                                                        <li><a href="products.php?id_prod=19<?php echo "&correo=".$_GET['correo']."&id_usuario=".$_GET['id_usuario']?>"></a></li>
+                                                        <li><a href="products.php?id_prod=20<?php echo "&correo=".$_GET['correo']."&id_usuario=".$_GET['id_usuario']?>"></a></li>
                                                         <li><a href="products.php?id_prod=21"></a></li>
                                                     </ul>
                                                 </div>
@@ -211,7 +221,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                             </div>
                                         </ul>
                                     </li>
-                                    
+
                                 </ul>
                             </div>
                         </nav>
@@ -230,19 +240,19 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         <script src="js/classie.js"></script>
                         <script src="js/uisearch.js"></script>
                         <script>
-new UISearch(document.getElementById('sb-search'));
+            new UISearch(document.getElementById('sb-search'));
                         </script>
                         <!-- //search-scripts -->
                     </div>
                     <div class="header-right">
                         <div class="cart box_1">
-                            <a href="checkout.php">
-                                <h3> <div class="total">
-                                        <span class="simpleCart_total"></span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> items)</div>
-                                    <img src="images/bag.png" alt="" />
-                                </h3>
-                            </a>
-                            <p><a href="javascript:;" class="simpleCart_empty">Carrito Vacío</a></p>
+
+                            <h3> <div class="total">
+                                    <span class="simpleCart_total"></span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> items)</div>
+                                <img src="images/bag.png" alt="" />
+                            </h3>
+
+                            <p><a href="javascript:;" class="simpleCart_empty">Vaciar Carrito</a></p>
                             <div class="clearfix"> </div>
                         </div>	
                     </div>
@@ -374,15 +384,14 @@ new UISearch(document.getElementById('sb-search'));
             <div class="container">
                 <div class="footer-grids">
                     <div class="col-md-3 footer-grid animated wow slideInLeft" data-wow-delay=".5s">
-                        <h3>About Us</h3>
-                        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse.<span>Excepteur sint occaecat cupidatat 
-                                non proident, sunt in culpa qui officia deserunt mollit.</span></p>
+                        <h3>Sobre nosotros</h3>
+                        <p>Somos la mejor tienda online del mercado<span>100% española</span></p>
                     </div>
                     <div class="col-md-3 footer-grid animated wow slideInLeft" data-wow-delay=".6s">
                         <h3>Contact Info</h3>
                         <ul>
-                            <li><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>1234k Avenue, 4th block, <span>New York City.</span></li>
-                            <li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i><a href="mailto:info@example.com">info@example.com</a></li>
+                            <li><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>286595 Calle Mayor, Madrid <span>España</span></li>
+                            <li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i><a href="mailto:e-mercadillo@mercadillo.com">e-mercadillo@mercadillo.com</a></li>
                             <li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>+1234 567 567</li>
                         </ul>
                     </div>
@@ -426,36 +435,14 @@ new UISearch(document.getElementById('sb-search'));
                         </div>
                         <div class="clearfix"> </div>
                     </div>
-                    <div class="col-md-3 footer-grid animated wow slideInLeft" data-wow-delay=".8s">
-                        <h3>Blog Posts</h3>
-                        <div class="footer-grid-sub-grids">
-                            <div class="footer-grid-sub-grid-left">
-                                <a href="single.php"><img src="images/9.jpg" alt=" " class="img-responsive" /></a>
-                            </div>
-                            <div class="footer-grid-sub-grid-right">
-                                <h4><a href="single.php">culpa qui officia deserunt</a></h4>
-                                <p>Posted On 25/3/2016</p>
-                            </div>
-                            <div class="clearfix"> </div>
-                        </div>
-                        <div class="footer-grid-sub-grids">
-                            <div class="footer-grid-sub-grid-left">
-                                <a href="single.php"><img src="images/10.jpg" alt=" " class="img-responsive" /></a>
-                            </div>
-                            <div class="footer-grid-sub-grid-right">
-                                <h4><a href="single.php">Quis autem vel eum iure</a></h4>
-                                <p>Posted On 25/3/2016</p>
-                            </div>
-                            <div class="clearfix"> </div>
-                        </div>
-                    </div>
+                   
                     <div class="clearfix"> </div>
                 </div>
                 <div class="footer-logo animated wow slideInUp" data-wow-delay=".5s">
-                    <h2><a href="index.php">Best Store <span>shop anywhere</span></a></h2>
+                    <h2><a href="index.php">E-mercadillo <span>compra online</span></a></h2>
                 </div>
                 <div class="copy-right animated wow slideInUp" data-wow-delay=".5s">
-                    <p>&copy 2016 Best Store. All rights reserved | Design by <a href="http://w3layouts.com/">W3layouts</a></p>
+                    <p>&copy 2018 E-mercadillo. All rights reserved | Design by Jesús Martínez de Juan</p>
                 </div>
             </div>
         </div>

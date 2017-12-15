@@ -5,8 +5,9 @@ Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 -->
+
 <?php
-session_start();
+ session_start();
 ?>
 <!DOCTYPE html>
 <html>
@@ -51,10 +52,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                    <div class="header-grid-left animated wow slideInLeft" data-wow-delay=".5s">
 					<ul>
                                             <?php 
-                                            if($_GET['logged']==false){?>
+                                            if($_GET['id_usuario'] == ''){?>
                                                 <li class="active"><i class="glyphicon glyphicon-log-in" aria-hidden="true"></i><a href="login.php">Login</a></li>
 						<li><i class="glyphicon glyphicon-book" aria-hidden="true"></i><a href="register.php">Register</a></li>
-                                            <?php echo 'hola';}
+                                            <?php echo 'No logueado';}
                                             else{
                                                 ?> <li><a>Logueado como <?php echo $_GET['correo']?></a></li><?php
                                             }
@@ -278,16 +279,15 @@ new UISearch(document.getElementById('sb-search'));
 <!-- login -->
 	<div class="login">
 		<div class="container">
-			<h3 class="animated wow zoomIn" data-wow-delay=".5s">Login Form</h3>
-			<p class="est animated wow zoomIn" data-wow-delay=".5s">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia 
-				deserunt mollit anim id est laborum.</p>
+			<h3 class="animated wow zoomIn" data-wow-delay=".5s">Login</h3>
+			<p class="est animated wow zoomIn" data-wow-delay=".5s">Rellena este formulario para loguearte</p>
 			<div class="login-form-grids animated wow slideInUp" data-wow-delay=".5s">
                             <form method="post" action = "<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
                                     
-                                <input type="email" placeholder="Email Address" name="correoLI" required=" " value="<?php echo $_GET['correo'];?>">
-					<input type="password" placeholder="Password" name="contrasenaLI" required=" " value="<?php echo $_GET['contrasena']?>">
+                                <input type="email" placeholder="Correo Electronico" name="correoLI" required=" " value="<?php echo $_GET['correo'];?>">
+					<input type="password" placeholder="Contraseña" name="contrasenaLI" required=" " value="<?php echo $_GET['contrasena']?>">
 					<div class="forgot">
-						<a href="#">Forgot Password?</a>
+						<a href="#">¿Ha olvidado la contraseña?</a>
 					</div>
 					<input type="submit" value="Login" >
 				</form>
@@ -303,7 +303,7 @@ new UISearch(document.getElementById('sb-search'));
                     if (mysqli_connect_errno()) {
                         echo "Imposible conectarse a la base de datos: " . mysqli_connect_error();
                     } else {
-                        $sql = "SELECT correo, contrasena FROM usuarios";
+                        $sql = "SELECT correo, contrasena, id_usuario FROM usuarios";
                         $resultado = $mysqli->query($sql);
                         if ($mysqli->errno)
                             die($mysqli->error);
@@ -311,121 +311,103 @@ new UISearch(document.getElementById('sb-search'));
                         while ($fila = mysqli_fetch_assoc($resultado)) {
                             if ($fila['correo'] == $_POST['correoLI'] && $_POST['correoLI'] !="" && $fila['contrasena'] == $_POST['contrasenaLI'] && $_POST['contrasenaLI'] !="" ) {
                                 
-                                $_SESSION['correoSES'] = "hola";//$_POST['correoLI'];
-                                ?>   <meta http-equiv=REFRESH CONTENT=0;url='index.php?correo=<?php echo $_POST["correoLI"]?>&contrasena=<?php echo $_POST["contrasenaLI"]?>&logged=true'> <?php
-                                
+                               $correoVar = $_POST['correoLI'];
+                                $_SESSION['correoSS'] = $correoVar;
+                               
+                                ?>   <meta http-equiv=REFRESH CONTENT=0;url='index.php?correo=<?php echo $_POST["correoLI"]?>&id_usuario=<?php echo $fila['id_usuario']?>'> <?php
+                                       
                                 //$_SESSION["favanimal"] = "cat";
                                 $logueado=true;
+                               
                                break;
                             }  else if ($_POST['correoLI'] !="" && $_POST['contrasenaLI'] !="" ){ {
                                $logueado=false;
                             }
                             }
                         }
+                        
                         if(!$logueado){
                             echo "Correo o contraseña incorrectos, por favor intente otra vez";
+                        } else {
+                            
                         }
                         
                     }
                  
 //                       
                     ?>
-			<h4 class="animated wow slideInUp" data-wow-delay=".5s">For New People</h4>
-			<p class="animated wow slideInUp" data-wow-delay=".5s"><a href="register.php">Register Here</a> (Or) go back to <a href="index.php">Home<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a></p>
+			
 		</div>
 	</div>
 <!-- //login -->
 <!-- footer -->
-	<div class="footer">
-		<div class="container">
-			<div class="footer-grids">
-				<div class="col-md-3 footer-grid animated wow slideInLeft" data-wow-delay=".5s">
-					<h3>About Us</h3>
-					<p>Duis aute irure dolor in reprehenderit in voluptate velit esse.<span>Excepteur sint occaecat cupidatat 
-						non proident, sunt in culpa qui officia deserunt mollit.</span></p>
-				</div>
-				<div class="col-md-3 footer-grid animated wow slideInLeft" data-wow-delay=".6s">
-					<h3>Contact Info</h3>
-					<ul>
-						<li><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>1234k Avenue, 4th block, <span>New York City.</span></li>
-						<li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i><a href="mailto:info@example.com">info@example.com</a></li>
-						<li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>+1234 567 567</li>
-					</ul>
-				</div>
-				<div class="col-md-3 footer-grid animated wow slideInLeft" data-wow-delay=".7s">
-					<h3>Flickr Posts</h3>
-					<div class="footer-grid-left">
-						<a href="single.php"><img src="images/13.jpg" alt=" " class="img-responsive" /></a>
-					</div>
-					<div class="footer-grid-left">
-						<a href="single.php"><img src="images/14.jpg" alt=" " class="img-responsive" /></a>
-					</div>
-					<div class="footer-grid-left">
-						<a href="single.php"><img src="images/15.jpg" alt=" " class="img-responsive" /></a>
-					</div>
-					<div class="footer-grid-left">
-						<a href="single.php"><img src="images/16.jpg" alt=" " class="img-responsive" /></a>
-					</div>
-					<div class="footer-grid-left">
-						<a href="single.php"><img src="images/13.jpg" alt=" " class="img-responsive" /></a>
-					</div>
-					<div class="footer-grid-left">
-						<a href="single.php"><img src="images/14.jpg" alt=" " class="img-responsive" /></a>
-					</div>
-					<div class="footer-grid-left">
-						<a href="single.php"><img src="images/15.jpg" alt=" " class="img-responsive" /></a>
-					</div>
-					<div class="footer-grid-left">
-						<a href="single.php"><img src="images/16.jpg" alt=" " class="img-responsive" /></a>
-					</div>
-					<div class="footer-grid-left">
-						<a href="single.php"><img src="images/13.jpg" alt=" " class="img-responsive" /></a>
-					</div>
-					<div class="footer-grid-left">
-						<a href="single.php"><img src="images/14.jpg" alt=" " class="img-responsive" /></a>
-					</div>
-					<div class="footer-grid-left">
-						<a href="single.php"><img src="images/15.jpg" alt=" " class="img-responsive" /></a>
-					</div>
-					<div class="footer-grid-left">
-						<a href="single.php"><img src="images/16.jpg" alt=" " class="img-responsive" /></a>
-					</div>
-					<div class="clearfix"> </div>
-				</div>
-				<div class="col-md-3 footer-grid animated wow slideInLeft" data-wow-delay=".8s">
-					<h3>Blog Posts</h3>
-					<div class="footer-grid-sub-grids">
-						<div class="footer-grid-sub-grid-left">
-							<a href="single.php"><img src="images/9.jpg" alt=" " class="img-responsive" /></a>
-						</div>
-						<div class="footer-grid-sub-grid-right">
-							<h4><a href="single.php">culpa qui officia deserunt</a></h4>
-							<p>Posted On 25/3/2016</p>
-						</div>
-						<div class="clearfix"> </div>
-					</div>
-					<div class="footer-grid-sub-grids">
-						<div class="footer-grid-sub-grid-left">
-							<a href="single.php"><img src="images/10.jpg" alt=" " class="img-responsive" /></a>
-						</div>
-						<div class="footer-grid-sub-grid-right">
-							<h4><a href="single.php">Quis autem vel eum iure</a></h4>
-							<p>Posted On 25/3/2016</p>
-						</div>
-						<div class="clearfix"> </div>
-					</div>
-				</div>
-				<div class="clearfix"> </div>
-			</div>
-			<div class="footer-logo animated wow slideInUp" data-wow-delay=".5s">
-				<h2><a href="index.php">Best Store <span>shop anywhere</span></a></h2>
-			</div>
-			<div class="copy-right animated wow slideInUp" data-wow-delay=".5s">
-				<p>&copy 2016 Best Store. All rights reserved | Design by <a href="http://w3layouts.com/">W3layouts</a></p>
-			</div>
-		</div>
-	</div>
-<!-- //footer -->
+        <div class="footer">
+            <div class="container">
+                <div class="footer-grids">
+                    <div class="col-md-3 footer-grid animated wow slideInLeft" data-wow-delay=".5s">
+                        <h3>Sobre nosotros</h3>
+                        <p>Somos la mejor tienda online del mercado<span>100% española</span></p>
+                    </div>
+                    <div class="col-md-3 footer-grid animated wow slideInLeft" data-wow-delay=".6s">
+                        <h3>Contact Info</h3>
+                        <ul>
+                            <li><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>286595 Calle Mayor, Madrid <span>España</span></li>
+                            <li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i><a href="mailto:e-mercadillo@mercadillo.com">e-mercadillo@mercadillo.com</a></li>
+                            <li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>+1234 567 567</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3 footer-grid animated wow slideInLeft" data-wow-delay=".7s">
+                        <h3>Flickr Posts</h3>
+                        <div class="footer-grid-left">
+                            <a href="single.php"><img src="images/13.jpg" alt=" " class="img-responsive" /></a>
+                        </div>
+                        <div class="footer-grid-left">
+                            <a href="single.php"><img src="images/14.jpg" alt=" " class="img-responsive" /></a>
+                        </div>
+                        <div class="footer-grid-left">
+                            <a href="single.php"><img src="images/15.jpg" alt=" " class="img-responsive" /></a>
+                        </div>
+                        <div class="footer-grid-left">
+                            <a href="single.php"><img src="images/16.jpg" alt=" " class="img-responsive" /></a>
+                        </div>
+                        <div class="footer-grid-left">
+                            <a href="single.php"><img src="images/13.jpg" alt=" " class="img-responsive" /></a>
+                        </div>
+                        <div class="footer-grid-left">
+                            <a href="single.php"><img src="images/14.jpg" alt=" " class="img-responsive" /></a>
+                        </div>
+                        <div class="footer-grid-left">
+                            <a href="single.php"><img src="images/15.jpg" alt=" " class="img-responsive" /></a>
+                        </div>
+                        <div class="footer-grid-left">
+                            <a href="single.php"><img src="images/16.jpg" alt=" " class="img-responsive" /></a>
+                        </div>
+                        <div class="footer-grid-left">
+                            <a href="single.php"><img src="images/13.jpg" alt=" " class="img-responsive" /></a>
+                        </div>
+                        <div class="footer-grid-left">
+                            <a href="single.php"><img src="images/14.jpg" alt=" " class="img-responsive" /></a>
+                        </div>
+                        <div class="footer-grid-left">
+                            <a href="single.php"><img src="images/15.jpg" alt=" " class="img-responsive" /></a>
+                        </div>
+                        <div class="footer-grid-left">
+                            <a href="single.php"><img src="images/16.jpg" alt=" " class="img-responsive" /></a>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                   
+                    <div class="clearfix"> </div>
+                </div>
+                <div class="footer-logo animated wow slideInUp" data-wow-delay=".5s">
+                    <h2><a href="index.php">E-mercadillo <span>compra online</span></a></h2>
+                </div>
+                <div class="copy-right animated wow slideInUp" data-wow-delay=".5s">
+                    <p>&copy 2018 E-mercadillo. All rights reserved | Design by Jesús Martínez de Juan</p>
+                </div>
+            </div>
+        </div>
+        <!-- //footer -->
 </body>
 </html>
 

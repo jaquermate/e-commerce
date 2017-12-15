@@ -48,11 +48,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <div class="header-grid">
                     <div class="header-grid-left animated wow slideInLeft" data-wow-delay=".5s">
                         <ul>
+                            
+                            <?php if ($_GET['correo'] == '') { ?>
+                                <li><i class="glyphicon glyphicon-log-in" aria-hidden="true"></i><a href="login.php">Login</a></li>
+                                <li><i class="glyphicon glyphicon-book" aria-hidden="true"></i><a href="register.php">Register</a></li>
+                            <?php } else {
+                                ?>
+                                <li> Logueado como:</li><li><h3> <?php echo $_GET['correo']; si?> </h3> </li><?php
+                            }
+                            ?>
                             <li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i><a href="mailto:e-mercadillo@mercadillo.com">e-mercadillo@mercadillo.com</a></li>
                             <li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>+1234 567 892</li>
-                            <li><i class="glyphicon glyphicon-log-in" aria-hidden="true"></i><a href="login.php">Login</a></li>
-                            <li><i class="glyphicon glyphicon-book" aria-hidden="true"></i><a href="register.php">Register</a></li>
-                            <li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i><a href="mail.php">Mail Us</a></li>
+                            <li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i><a href="mail.php">Contactanos</a></li>
                         </ul>
                     </div>
                     <div class="header-grid-right animated wow slideInRight" data-wow-delay=".5s">
@@ -839,95 +846,72 @@ new UISearch(document.getElementById('sb-search'));
 	</div>
 <!-- //typography-page -->
 <!-- footer -->
-	<div class="footer">
-		<div class="container">
-			<div class="footer-grids">
-				<div class="col-md-3 footer-grid animated wow slideInLeft" data-wow-delay=".5s">
-					<h3>About Us</h3>
-					<p>Duis aute irure dolor in reprehenderit in voluptate velit esse.<span>Excepteur sint occaecat cupidatat 
-						non proident, sunt in culpa qui officia deserunt mollit.</span></p>
-				</div>
-				<div class="col-md-3 footer-grid animated wow slideInLeft" data-wow-delay=".6s">
-					<h3>Contact Info</h3>
-					<ul>
-						<li><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>1234k Avenue, 4th block, <span>New York City.</span></li>
-						<li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i><a href="mailto:info@example.com">info@example.com</a></li>
-						<li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>+1234 567 567</li>
-					</ul>
-				</div>
-				<div class="col-md-3 footer-grid animated wow slideInLeft" data-wow-delay=".7s">
-					<h3>Flickr Posts</h3>
-					<div class="footer-grid-left">
-						<a href="single.php"><img src="images/13.jpg" alt=" " class="img-responsive" /></a>
-					</div>
-					<div class="footer-grid-left">
-						<a href="single.php"><img src="images/14.jpg" alt=" " class="img-responsive" /></a>
-					</div>
-					<div class="footer-grid-left">
-						<a href="single.php"><img src="images/15.jpg" alt=" " class="img-responsive" /></a>
-					</div>
-					<div class="footer-grid-left">
-						<a href="single.php"><img src="images/16.jpg" alt=" " class="img-responsive" /></a>
-					</div>
-					<div class="footer-grid-left">
-						<a href="single.php"><img src="images/13.jpg" alt=" " class="img-responsive" /></a>
-					</div>
-					<div class="footer-grid-left">
-						<a href="single.php"><img src="images/14.jpg" alt=" " class="img-responsive" /></a>
-					</div>
-					<div class="footer-grid-left">
-						<a href="single.php"><img src="images/15.jpg" alt=" " class="img-responsive" /></a>
-					</div>
-					<div class="footer-grid-left">
-						<a href="single.php"><img src="images/16.jpg" alt=" " class="img-responsive" /></a>
-					</div>
-					<div class="footer-grid-left">
-						<a href="single.php"><img src="images/13.jpg" alt=" " class="img-responsive" /></a>
-					</div>
-					<div class="footer-grid-left">
-						<a href="single.php"><img src="images/14.jpg" alt=" " class="img-responsive" /></a>
-					</div>
-					<div class="footer-grid-left">
-						<a href="single.php"><img src="images/15.jpg" alt=" " class="img-responsive" /></a>
-					</div>
-					<div class="footer-grid-left">
-						<a href="single.php"><img src="images/16.jpg" alt=" " class="img-responsive" /></a>
-					</div>
-					<div class="clearfix"> </div>
-				</div>
-				<div class="col-md-3 footer-grid animated wow slideInLeft" data-wow-delay=".8s">
-					<h3>Blog Posts</h3>
-					<div class="footer-grid-sub-grids">
-						<div class="footer-grid-sub-grid-left">
-							<a href="single.php"><img src="images/9.jpg" alt=" " class="img-responsive" /></a>
-						</div>
-						<div class="footer-grid-sub-grid-right">
-							<h4><a href="single.php">culpa qui officia deserunt</a></h4>
-							<p>Posted On 25/3/2016</p>
-						</div>
-						<div class="clearfix"> </div>
-					</div>
-					<div class="footer-grid-sub-grids">
-						<div class="footer-grid-sub-grid-left">
-							<a href="single.php"><img src="images/10.jpg" alt=" " class="img-responsive" /></a>
-						</div>
-						<div class="footer-grid-sub-grid-right">
-							<h4><a href="single.php">Quis autem vel eum iure</a></h4>
-							<p>Posted On 25/3/2016</p>
-						</div>
-						<div class="clearfix"> </div>
-					</div>
-				</div>
-				<div class="clearfix"> </div>
-			</div>
-			<div class="footer-logo animated wow slideInUp" data-wow-delay=".5s">
-				<h2><a href="index.php">Best Store <span>shop anywhere</span></a></h2>
-			</div>
-			<div class="copy-right animated wow slideInUp" data-wow-delay=".5s">
-				<p>&copy 2016 Best Store. All rights reserved | Design by <a href="http://w3layouts.com/">W3layouts</a></p>
-			</div>
-		</div>
-	</div>
-<!-- //footer -->
+        <div class="footer">
+            <div class="container">
+                <div class="footer-grids">
+                    <div class="col-md-3 footer-grid animated wow slideInLeft" data-wow-delay=".5s">
+                        <h3>Sobre nosotros</h3>
+                        <p>Somos la mejor tienda online del mercado<span>100% española</span></p>
+                    </div>
+                    <div class="col-md-3 footer-grid animated wow slideInLeft" data-wow-delay=".6s">
+                        <h3>Contact Info</h3>
+                        <ul>
+                            <li><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>286595 Calle Mayor, Madrid <span>España</span></li>
+                            <li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i><a href="mailto:e-mercadillo@mercadillo.com">e-mercadillo@mercadillo.com</a></li>
+                            <li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>+1234 567 567</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3 footer-grid animated wow slideInLeft" data-wow-delay=".7s">
+                        <h3>Flickr Posts</h3>
+                        <div class="footer-grid-left">
+                            <a href="single.php"><img src="images/13.jpg" alt=" " class="img-responsive" /></a>
+                        </div>
+                        <div class="footer-grid-left">
+                            <a href="single.php"><img src="images/14.jpg" alt=" " class="img-responsive" /></a>
+                        </div>
+                        <div class="footer-grid-left">
+                            <a href="single.php"><img src="images/15.jpg" alt=" " class="img-responsive" /></a>
+                        </div>
+                        <div class="footer-grid-left">
+                            <a href="single.php"><img src="images/16.jpg" alt=" " class="img-responsive" /></a>
+                        </div>
+                        <div class="footer-grid-left">
+                            <a href="single.php"><img src="images/13.jpg" alt=" " class="img-responsive" /></a>
+                        </div>
+                        <div class="footer-grid-left">
+                            <a href="single.php"><img src="images/14.jpg" alt=" " class="img-responsive" /></a>
+                        </div>
+                        <div class="footer-grid-left">
+                            <a href="single.php"><img src="images/15.jpg" alt=" " class="img-responsive" /></a>
+                        </div>
+                        <div class="footer-grid-left">
+                            <a href="single.php"><img src="images/16.jpg" alt=" " class="img-responsive" /></a>
+                        </div>
+                        <div class="footer-grid-left">
+                            <a href="single.php"><img src="images/13.jpg" alt=" " class="img-responsive" /></a>
+                        </div>
+                        <div class="footer-grid-left">
+                            <a href="single.php"><img src="images/14.jpg" alt=" " class="img-responsive" /></a>
+                        </div>
+                        <div class="footer-grid-left">
+                            <a href="single.php"><img src="images/15.jpg" alt=" " class="img-responsive" /></a>
+                        </div>
+                        <div class="footer-grid-left">
+                            <a href="single.php"><img src="images/16.jpg" alt=" " class="img-responsive" /></a>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                   
+                    <div class="clearfix"> </div>
+                </div>
+                <div class="footer-logo animated wow slideInUp" data-wow-delay=".5s">
+                    <h2><a href="index.php">E-mercadillo <span>compra online</span></a></h2>
+                </div>
+                <div class="copy-right animated wow slideInUp" data-wow-delay=".5s">
+                    <p>&copy 2018 E-mercadillo. All rights reserved | Design by Jesús Martínez de Juan</p>
+                </div>
+            </div>
+        </div>
+        <!-- //footer -->
 </body>
 </html>
